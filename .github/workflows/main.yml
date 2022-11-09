@@ -10,7 +10,7 @@ jobs:
       env:
         MY_VAR: Hi there! My name is
         FIRST_NAME: Nhut
-        LAST_NAME: Pham
+        LAST_NAME: Pham 22
       run: echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
     - name: my second step
       if: success()
