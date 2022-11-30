@@ -27,8 +27,8 @@ jobs:
     - name: build
       run: |
         mkdir dist
-        touch dist/test.txt
-        touch package.json
+        echo "test file" > dist/test.txt
+        echo "package file" > package.json
     - name: upload artifacts
       uses: actions/upload-artifact@v3
       with:
