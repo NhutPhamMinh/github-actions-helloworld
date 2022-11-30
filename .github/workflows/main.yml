@@ -6,6 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: my first step
-      run: echo "Hello World"
+      env:
+        FIRST_NAME: Nhut
+        LAST_NAME: Pham
+      run: |
+        echo "Hello World"
+        echo "My name is " $FIRST_NAME $LAST_NAME
     - name: my second step
+      if: success()
       run: echo "Done - Bye"
