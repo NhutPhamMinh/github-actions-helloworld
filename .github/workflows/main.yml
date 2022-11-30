@@ -15,3 +15,9 @@ jobs:
     - name: my second step
       if: success()
       run: echo "Done - Bye"
+  second-job:
+    needs: first-job
+    runs-on: ubuntu-latest
+    steps:
+    - name: my third step
+      run: echo "executing third step..."
