@@ -24,3 +24,16 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
+    - name: build
+      run: |
+        mkdir dist
+        touch dist/test.txt
+        touch package.json
+    - name: upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist-files
+        path: |
+          dist
+          package.json
+        
