@@ -1,5 +1,7 @@
 name: First Workflow
 on: [ push, workflow_dispatch ]
+env:
+  DB_NAME: test-db
 jobs:
   first-job:
     runs-on: ubuntu-latest
@@ -51,6 +53,10 @@ jobs:
           package.json
   deploy-job:
     needs: build-job
+    env:
+      DB_ADDRESS: db.com
+      DB_USERNAME: admin
+      DB_PASSWORD: 123456
     runs-on: ubuntu-latest
     steps:
     - name: get code
@@ -76,5 +82,10 @@ jobs:
         ls dist
     - name: output filename
       run: echo ${{ needs.build-job.outputs.script-file }}
+    - name: output application information
+      run: |
+        echo "DB_NAME: ${{ env.DB_NAME }}"
+        echo "DB_ADDRESS: ${{ env.DB_ADDRESS }}"
+        echo "DB_USERNAME / PASS: $DB_USERNAME / $DB_PASSWORD"
     - name: deploy
       run: echo "deploying..."
