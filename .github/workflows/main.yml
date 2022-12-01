@@ -53,10 +53,11 @@ jobs:
           package.json
   deploy-job:
     needs: build-job
+    environment: testing
     env:
       DB_ADDRESS: db.com
-      DB_USERNAME: admin
-      DB_PASSWORD: 123456
+      DB_USERNAME: ${{ secrets.DB_USERNAME }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
     runs-on: ubuntu-latest
     steps:
     - name: get code
@@ -86,6 +87,6 @@ jobs:
       run: |
         echo "DB_NAME: ${{ env.DB_NAME }}"
         echo "DB_ADDRESS: ${{ env.DB_ADDRESS }}"
-        echo "DB_USERNAME / PASS: ${{ secrets.DB_USERNAME}} / ${{ secrets.DB_PASSWORD }}"
+        echo "DB_USERNAME / PASS: ${{ env.DB_USERNAME}} / ${{ env.DB_PASSWORD }}"
     - name: deploy
       run: echo "deploying..."
