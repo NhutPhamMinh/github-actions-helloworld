@@ -17,6 +17,8 @@ jobs:
   build-job:
     needs: first-job
     runs-on: ubuntu-latest
+    outputs:
+      script-file: ${{ steps.publish-step.outputs.script-file }}
     steps:
     - name: get code
       uses: actions/checkout@v3
@@ -29,6 +31,9 @@ jobs:
         mkdir dist
         echo "test file" > dist/test.txt
         echo "package file" > package.json
+    - name: publish file
+      id: publish-step
+      run: find dist/*.txt -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
     - name: upload artifacts
       uses: actions/upload-artifact@v3
       with:
@@ -48,5 +53,7 @@ jobs:
       run: |
         ls
         ls dist
+    - name: output filename
+      run: echo ${{ needs.build-job.outputs.script-file }}
     - name: deploy
       run: echo "deploying..."
