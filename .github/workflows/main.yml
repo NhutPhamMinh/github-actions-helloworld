@@ -28,9 +28,9 @@ jobs:
         node-version: 18
     - name: build
       run: |
-        mkdir dist
-        echo "test file" > dist/test.txt
         echo "package file" > package.json
+        mkdir dist
+        cd dist && mktemp XXXXXXXXXX.$(mktemp -u XXX)
     - name: publish file
       id: publish-step
       run: find dist/*.txt -type f -execdir echo 'script-file={}' >> $GITHUB_OUTPUT ';'
