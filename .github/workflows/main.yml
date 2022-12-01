@@ -26,6 +26,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
+    - name: install dependencies
+      run: npm install
     - name: build
       run: |
         echo "package file" > package.json
