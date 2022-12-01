@@ -32,7 +32,7 @@ jobs:
       with:
         node-version: 18
     - name: install dependencies
-      run: npm install
+      run: npm ci
     - name: build
       run: |
         echo "package file" > package.json
@@ -60,6 +60,12 @@ jobs:
       with:
         path: ~/.npm
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: install NodeJS
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: install dependencies
+      run: npm ci
     - name: download artifacts
       uses: actions/download-artifact@v3
       with:
