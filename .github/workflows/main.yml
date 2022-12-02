@@ -101,7 +101,8 @@ jobs:
     steps:
     - name: failure job
       run: |
-        abcdef
+        echo "failure job"
+        # abcdef
   report-job:
     # needs: [deploy-job, independent-job, failure-job]
     # if: failure()
