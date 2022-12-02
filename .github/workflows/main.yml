@@ -103,8 +103,8 @@ jobs:
       run: |
         abcdef
   report-job:
-    needs: [deploy-job, independent-job, failure-job]
-    if: failure()
+    # needs: [deploy-job, independent-job, failure-job]
+    # if: failure()
     runs-on: ubuntu-latest
     steps:
       - name: output error
