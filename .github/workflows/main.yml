@@ -90,6 +90,12 @@ jobs:
         echo "DB_USERNAME / PASS: ${{ env.DB_USERNAME}} / ${{ env.DB_PASSWORD }}"
     - name: deploy
       run: echo "deploying..."
+  independent-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: independent step
+      run: |
+        echo "independent step"
   report-job:
     if: failure()
     runs-on: ubuntu-latest
