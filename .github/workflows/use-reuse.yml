@@ -6,6 +6,19 @@ jobs:
     steps:
       - name: using reusable deploy
         run: echo "using reusable deploy"
+      - name: build
+        run: |
+          echo "test 1" > test1.txt
+          mkdir dist
+          cd dist
+          mktemp XXXXXXXXXX.$(mktemp -u XXX)
+      - name: upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: |
+            dist
+            test1.txt
   deploy:
     needs: info
     uses: ./.github/workflows/reusable.yml
