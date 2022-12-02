@@ -16,12 +16,6 @@ jobs:
     - name: my second step
       if: success()
       run: echo "Done - Bye"
-    #- name: error step
-    #  id: err-step
-    #  run: abcdef xxx
-    - name: skip in case error
-      if: failure() && steps.err-step.outcome == 'failure'
-      run: echo 'error step'
   build-job:
     needs: first-job
     runs-on: ubuntu-latest
