@@ -90,3 +90,11 @@ jobs:
         echo "DB_USERNAME / PASS: ${{ env.DB_USERNAME}} / ${{ env.DB_PASSWORD }}"
     - name: deploy
       run: echo "deploying..."
+  report-job:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: output error
+        run: |
+          echo "something went wrong"
+          echo "${{ github }}
