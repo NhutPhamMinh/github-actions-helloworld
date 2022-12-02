@@ -1,0 +1,11 @@
+name: Use Resuable Deploy
+on: workflow_dispatch
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: using reusable deploy
+        run: echo "using reusable deploy"
+  deploy:
+    needs: info
+    uses: ./.github/workflows/reusable.yml
