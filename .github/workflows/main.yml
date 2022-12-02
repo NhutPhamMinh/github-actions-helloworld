@@ -96,6 +96,12 @@ jobs:
     - name: independent step
       run: |
         echo "independent step"
+  failure-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: failure job
+      run: |
+        abcdef
   report-job:
     if: failure()
     runs-on: ubuntu-latest
