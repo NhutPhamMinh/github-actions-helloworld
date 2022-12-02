@@ -22,3 +22,5 @@ jobs:
   deploy:
     needs: info
     uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: dist-files
