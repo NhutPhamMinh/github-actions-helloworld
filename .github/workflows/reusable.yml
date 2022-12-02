@@ -6,7 +6,7 @@ on:
         description: artifact file name
         required: false
         type: string
-        default: dist-files
+        default: dist
 jobs:
   deploy:
     runs-on: ubuntu-latest
