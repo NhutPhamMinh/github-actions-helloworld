@@ -7,6 +7,9 @@ on:
         required: false
         type: string
         default: dist
+    secrets:
+      db-username:
+        required: false
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,4 +23,6 @@ jobs:
           ls
           ls dist
       - name: output information
-        run: echo "deploying & uploading..."
+        run: |
+          echo "deploying & uploading..."
+          echo ${{ secrets.db.username }}
