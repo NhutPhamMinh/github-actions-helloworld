@@ -26,3 +26,10 @@ jobs:
       artifact-name: dist-files
     secrets:
       username: ${{ secrets.DB_USERNAME }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: print deploy output
+        run: echo ${{ steps.deploy.output.result }}
+    
