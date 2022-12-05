@@ -8,7 +8,7 @@ on:
         type: string
         default: dist
     secrets:
-      db-username:
+      username:
         required: false
 jobs:
   deploy:
@@ -25,4 +25,4 @@ jobs:
       - name: output information
         run: |
           echo "deploying & uploading..."
-          echo "db username" ${{ secrets.db-username }}
+          echo "db username" ${{ secrets.username }}
