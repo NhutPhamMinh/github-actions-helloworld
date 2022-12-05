@@ -25,4 +25,4 @@ jobs:
       - name: output information
         run: |
           echo "deploying & uploading..."
-          echo ${{ secrets.db.username }}
+          echo "db username" ${{ secrets.db-username }}
