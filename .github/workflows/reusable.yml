@@ -7,12 +7,18 @@ on:
         required: false
         type: string
         default: dist
+    outputs:
+      result:
+        description: result of deployment operation
+        value: ${{ jobs.deploy.outputs.outcome }}
     secrets:
       username:
         required: false
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
     steps:
       - name: download artifacts
         uses: actions/download-artifact@v3
@@ -26,3 +32,6 @@ jobs:
         run: |
           echo "deploying & uploading..."
           echo "db username" ${{ secrets.username }}
+      - name: set result output
+        id: set-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
