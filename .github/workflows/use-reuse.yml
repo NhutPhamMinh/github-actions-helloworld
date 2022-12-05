@@ -25,4 +25,4 @@ jobs:
     with:
       artifact-name: dist-files
     secrets:
-      db-username: ${{ secrets.DB_USERNAME }}
+      username: ${{ secrets.DB_USERNAME }}
