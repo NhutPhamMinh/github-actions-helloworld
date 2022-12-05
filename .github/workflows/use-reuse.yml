@@ -24,3 +24,5 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       artifact-name: dist-files
+    secrets:
+      db-username: ${{ secrets.DB_USERNAME }}
