@@ -31,5 +31,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print deploy output
-        run: echo ${{ steps.deploy.output.result }}
+        run: echo ${{ needs.deploy.outputs.result }}
     
